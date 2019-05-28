@@ -1,0 +1,80 @@
+<DOCTYPE html>
+    <html>
+
+    <head>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.6/angular.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body ng-app="MyApps">
+        <div ng-controller="AppController">
+            <div class="filtering " layout="row" layout-align="space between center">
+                <md-datepicker class="paddingLR10 " md-placeholder="“Enterdate”" ng-model="dates.fromDate">
+                </md-datepicker>
+
+                <md-datepicker class="paddingLR10 " md-placeholder="“Enterdate”" ng-model="dates.toDate">
+                </md-datepicker>
+
+                <md-button class="paddingLR10 populate" class="md-raised" ng-click="update()">Populate</md-button>
+                <a class="paddingLR10 " ng-click="lastWeek()">Last week</a>
+                <a class="paddingLR10 " ng-click="lastFifteen()">Last 15 days</a>
+                <a class="paddingLR10 " ng-click="lastMonth()">Last 30 days</a>
+
+                <md-switch class="paddingLR10 " ng-model="isFalse" aria-label="Switch 1" ng-change="paid(isFalse)">
+                    Paid: {{ sText }}
+                </md-switch>
+                <!-- <pre>{{ isFalse }}</pre> -->
+            </div>
+
+            <!-- <pre>user = {{ dates | json }}</pre> -->
+            <table ng-table="tableParams " class="table " show-filter="true ">
+                <tr ng-repeat="x in $data | filter: isPaid  ">
+                    <td title=" 'Name' " filter="{student_name: 'text'} " sortable=" 'student_name' ">
+                        {{ x.student_name }}
+                    </td>
+                    <td title=" 'Coaching_Name' " filter="{ coaching_name: 'text'} " sortable=" 'coaching.name' ">
+                        {{ x.coaching.name }}
+                    </td>
+                    <td title=" 'Invoice' ">
+                        <a ng-href="{{ x.invoice }} " target="_blank ">preview</a>
+                    </td>
+                    <td title=" 'Invoice Created' ">
+                        {{ x._created | date }}
+                    </td>
+                    <td title=" 'User_Email' " f>
+                        {{ x.user.email }}
+                    </td>
+                    <td title=" 'User_Mobile' ">
+                        {{ x.user.mobile }}
+                    </td>
+                    <!-- <td title=" 'Paid' ">
+                        {{ x._paid }}
+                    </td> -->
+                </tr>
+            </table>
+        </div>
+
+        <!-- Modules -->
+        <script type="text/javascript " src="./app.js "></script>
+
+        <!-- Controllers -->
+        <script src="./AppController.js "></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js "></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js "></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js "></script>
+
+        <!-- Angular Material Library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js "></script>
+    </body>
+
+    </html>
+</DOCTYPE>

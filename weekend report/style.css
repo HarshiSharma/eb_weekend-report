@@ -1,0 +1,29 @@
+body {
+    width: 100% !important;
+    height: 100% !important;
+    background-color: white !important;
+}
+
+.paddingLR10 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.filtering {
+    width: 100%;
+}
+
+.populate {
+    background-color: #20C39A !important;
+}
+
+.populate:hover {
+    background-color: rgba(255, 255, 255, 0.938) !important;
+    color: black;
+    border: 2px #20C39A solid;
+}
+
+a {
+    color: #20C39A !important;
+    font-size: 16px;
+}
